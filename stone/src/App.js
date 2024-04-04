@@ -1,4 +1,4 @@
-import React, { useState,useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './App.css';
 import axios from 'axios';
 
@@ -14,6 +14,12 @@ function App() {
     player2Choice: '',
     gameId: null
   });
+
+  useEffect(() => {
+    if (gameState.currentRound > 6) {
+      setGameState(prevState => ({ ...prevState, gameOver: true }));
+    }
+  }, [gameState.currentRound]);
 
   const startGame = async () => {
     const { player1, player2 } = gameState;
@@ -156,3 +162,11 @@ function App() {
 }
 
 export default App;
+
+   
+  
+     
+
+  
+  
+          
